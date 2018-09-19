@@ -14,7 +14,7 @@ public class Egzaminator {
         try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ExamConfig.class)) {
 
             //AnswerService answerService = context.getBean(AnswerService.class);
-            //ExamAnswerService examAnswerService = context.getBean(ExamAnswerService.class);
+            ExamAnswerService examAnswerService = context.getBean(ExamAnswerService.class);
             QuestionService questionService = context.getBean(QuestionService.class);
             ExamService examService = context.getBean(ExamService.class);
 
@@ -63,24 +63,18 @@ public class Egzaminator {
 
             exam = examService.add(exam);
 
-            System.out.println("Exam started " + exam);
+            System.out.println("Exam start " + exam);
 
 
-            // answer checked on the exam
+            // answer checked
             ExamAnswer examAnswer = new ExamAnswer();
             examAnswer.setAnswer(answerSpring);
             examAnswer.setQuestion(question);
             examAnswer.setExam(exam);
 
-            Set<ExamAnswer> answerCheckedSet = new HashSet<>();
-            answerCheckedSet.add(examAnswer);
+            examAnswerService.add(examAnswer);
 
-            exam.setExamAnswer(answerCheckedSet);
-
-            Exam endedExam = examService.update(exam);
-
-            System.out.println("Exam ended with added answers" + endedExam);
-
+            System.out.println("Add exam answer" + examAnswer);
 
 
         }

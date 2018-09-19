@@ -6,10 +6,12 @@ import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.polkomtel.egzamin.Entity.Exam;
+import pl.polkomtel.egzamin.Entity.ExamAnswer;
 import pl.polkomtel.egzamin.repository.ExamRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Transactional
 @Log
@@ -22,11 +24,6 @@ public class ExamService {
 
     @Transactional
     public Exam add(Exam exam) {
-        return examRepository.save(exam);
-    }
-
-    @Transactional
-    public Exam update(Exam exam) {
         return examRepository.save(exam);
     }
 

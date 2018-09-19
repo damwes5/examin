@@ -20,8 +20,8 @@ public class ExamAnswerService {
     @NonNull
     private ExamAnswerRepository ExamAnswerRepository;
 
-    public ExamAnswer add(ExamAnswer person) {
-        return ExamAnswerRepository.save(person);
+    public ExamAnswer add(ExamAnswer examAnswer) {
+        return ExamAnswerRepository.save(examAnswer);
     }
 
     public List<ExamAnswer> getAll() {
