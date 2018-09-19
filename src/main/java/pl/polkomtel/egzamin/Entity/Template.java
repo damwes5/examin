@@ -14,8 +14,8 @@ public class Template {
     @GeneratedValue
     Long id;
 
-    @OneToMany(mappedBy = "template", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "templateId")
     Set<Question> question = new HashSet<>();
-
 
 }

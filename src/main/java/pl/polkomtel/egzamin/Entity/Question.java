@@ -26,7 +26,4 @@ public class Question {
 
     GroupQuestion groupQuestion;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "question")
-    private Template template;
 }

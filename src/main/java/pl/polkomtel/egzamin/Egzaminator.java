@@ -1,14 +1,17 @@
 package pl.polkomtel.egzamin;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.transaction.annotation.Transactional;
 import pl.polkomtel.egzamin.Entity.Answer;
 import pl.polkomtel.egzamin.Entity.Person;
 import pl.polkomtel.egzamin.Entity.Question;
+import pl.polkomtel.egzamin.Entity.Template;
 import pl.polkomtel.egzamin.dictionary.GroupQuestion;
 import pl.polkomtel.egzamin.services.*;
 
 import java.util.HashSet;
 import java.util.Set;
+
 
 public class Egzaminator {
     public static void main(String[] args) {
@@ -27,17 +30,14 @@ public class Egzaminator {
 
             System.out.println("All person: " + personService.getAll());
 
-
             // posilble answers for question 1
             Answer answerSpring = new Answer();
             answerSpring.setValue("Spring");
             answerSpring.setIsCorrect(true);
 
-
             Answer answerJpa = new Answer();
             answerJpa.setValue("Jpa");
             answerJpa.setIsCorrect(false);
-
 
             Set<Answer> answerSet = new HashSet<>();
             answerSet.add(answerJpa);
@@ -48,16 +48,18 @@ public class Egzaminator {
             question.setValue("Który framwork lubisz najbardziej ?");
             question.setGroupQuestion(GroupQuestion.DEVELOPMENT);
             question.setAnswers(answerSet);
-            question = questionService.add(question);
+            //question = questionService.add(question);
 
-            System.out.println("Question saved: " + question);
+            //System.out.println("Question saved: " + question);
 
+            // templete 1
+            Template template = new Template();
+            Set<Question> questions = new HashSet<>();
+            questions.add(question);
+            template.setQuestion(questions);
+            template = templateService.add(template);
 
-
-
-
-
-
+            System.out.println("Template: " + template);
 
         }
     }
