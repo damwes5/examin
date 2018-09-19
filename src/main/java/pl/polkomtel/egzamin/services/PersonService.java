@@ -4,11 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.polkomtel.egzamin.Entity.Person;
 import pl.polkomtel.egzamin.repository.PersonRepository;
 
 import java.util.List;
 
+@Transactional
 @Log
 @AllArgsConstructor
 @Service

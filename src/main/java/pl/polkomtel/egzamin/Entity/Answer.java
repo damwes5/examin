@@ -1,5 +1,6 @@
 package pl.polkomtel.egzamin.Entity;
 
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,12 +15,10 @@ public class Answer {
     @GeneratedValue
     Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "question")
-    private Question question;
-
     private String value;
 
     private Boolean isCorrect;
+
+
 
 }

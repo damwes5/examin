@@ -20,7 +20,8 @@ public class Question {
 
     String value;
 
-    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "questionId")
     private Set<Answer> answers = new HashSet<>();
 
     GroupQuestion groupQuestion;
