@@ -16,13 +16,15 @@ public class ExamAnswer {
     Long id;
 
     @ManyToOne
-    @JoinColumn(name = "examAnswer")
+    @JoinColumn(name = "exam")
     Exam exam;
 
-    //@ManyToOne
+    @ManyToOne
+    @JoinColumn(name = "question")
     Question question;
 
-    //@ManyToOne
+    @ManyToOne
+    @JoinColumn(name = "answer")
     Answer answer;
 
 }

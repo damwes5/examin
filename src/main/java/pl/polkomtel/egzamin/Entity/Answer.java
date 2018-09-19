@@ -18,8 +18,6 @@ public class Answer {
     @JoinColumn(name = "question")
     private Question question;
 
-    private Long idQuestion;
-
     private String value;
 
     private Boolean isCorrect;
