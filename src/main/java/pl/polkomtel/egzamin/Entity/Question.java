@@ -1,7 +1,6 @@
 package pl.polkomtel.egzamin.Entity;
 
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import pl.polkomtel.egzamin.dictionary.GroupQuestion;
@@ -13,7 +12,6 @@ import java.util.Set;
 @Entity
 @Data
 @NoArgsConstructor
-@Builder
 public class Question {
 
     @Id
