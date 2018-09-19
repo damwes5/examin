@@ -3,6 +3,7 @@ package pl.polkomtel.egzamin.services;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.extern.java.Log;
+import org.springframework.stereotype.Service;
 import pl.polkomtel.egzamin.Entity.Exam;
 import pl.polkomtel.egzamin.repository.ExamRepository;
 
@@ -11,6 +12,7 @@ import java.util.Optional;
 
 @Log
 @AllArgsConstructor
+@Service
 public class ExamService {
 
     @NonNull

@@ -9,10 +9,13 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import pl.polkomtel.egzamin.repository.PersonRepository;
+import pl.polkomtel.egzamin.services.PersonService;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -20,11 +23,18 @@ import java.util.Properties;
 
 import static java.lang.Integer.parseInt;
 
+@EnableJpaRepositories(basePackages = "pl.polkomtel.egzamin")
 @EnableTransactionManagement
 @PropertySource("classpath:jdbc.properties")
 @EnableAspectJAutoProxy
 @Configuration
 public class ExamConfig {
+
+
+    @Bean
+    public PersonService personService(PersonRepository personRepository) {
+        return new PersonService(personRepository);
+    }
 
 
     @Bean

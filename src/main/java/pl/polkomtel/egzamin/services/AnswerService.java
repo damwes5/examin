@@ -3,6 +3,7 @@ package pl.polkomtel.egzamin.services;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.extern.java.Log;
+import org.springframework.stereotype.Service;
 import pl.polkomtel.egzamin.Entity.Answer;
 import pl.polkomtel.egzamin.repository.AnswerRepository;
 
@@ -11,20 +12,21 @@ import java.util.Optional;
 
 @Log
 @AllArgsConstructor
+@Service
 public class AnswerService {
 
     @NonNull
     private AnswerRepository answerRepository;
 
-    public Answer add(Answer person){
+    public Answer add(Answer person) {
         return answerRepository.save(person);
     }
 
-    public List<Answer> getAll(){
+    public List<Answer> getAll() {
         return answerRepository.findAll();
     }
 
-    public Optional<Answer> getById(Long id){
+    public Optional<Answer> getById(Long id) {
         return answerRepository.findById(id);
     }
 
