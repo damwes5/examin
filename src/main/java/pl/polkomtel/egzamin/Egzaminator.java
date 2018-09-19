@@ -1,7 +1,6 @@
 package pl.polkomtel.egzamin;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.transaction.annotation.Transactional;
 import pl.polkomtel.egzamin.Entity.Answer;
 import pl.polkomtel.egzamin.Entity.Person;
 import pl.polkomtel.egzamin.Entity.Question;
@@ -62,6 +61,17 @@ public class Egzaminator {
 
             System.out.println("Template: " + template);
 
+            // exam 1
+            /*
+            Exam exam = new Exam();
+            //Person person = personService.getAll().get(0);
+            //exam.setPerson(person);
+            exam.setTemplate(template);
+
+            examService.add(exam);
+
+            System.out.println("Exam: " + exam);
+*/
         }
     }
 }
