@@ -15,12 +15,10 @@ public class Exam {
     @GeneratedValue
     Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "template")
+    @OneToOne
     Template template;
 
-    @ManyToOne
-    @JoinColumn(name = "person")
+    @OneToOne
     Person person;
 
     @OneToMany(mappedBy = "exam")
