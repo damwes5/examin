@@ -7,6 +7,7 @@ import pl.polkomtel.egzamin.Entity.Person;
 import pl.polkomtel.egzamin.repository.PersonRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Log
 @AllArgsConstructor
@@ -23,6 +24,9 @@ public class PersonService {
         return personRepository.findAll();
     }
 
+    public Optional<Person> getById(Long id){
+        return personRepository.findById(id);
+    }
 
 
 }
