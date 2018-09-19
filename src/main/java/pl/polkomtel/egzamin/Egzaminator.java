@@ -54,6 +54,7 @@ public class Egzaminator {
 
             // templete 1
             Template template = new Template();
+            template.setName("Jezyki programowania");
             Set<Question> questions = new HashSet<>();
             questions.add(question);
             template.setQuestion(questions);
