@@ -25,6 +25,11 @@ public class ExamService {
         return examRepository.save(exam);
     }
 
+    @Transactional
+    public Exam update(Exam exam) {
+        return examRepository.save(exam);
+    }
+
     public List<Exam> getAll() {
         return examRepository.findAll();
     }

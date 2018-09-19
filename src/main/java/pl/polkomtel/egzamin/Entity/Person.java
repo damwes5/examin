@@ -1,15 +1,16 @@
 package pl.polkomtel.egzamin.Entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class Person {
 
@@ -21,4 +22,8 @@ public class Person {
 
     String lastName;
 
+    public Person(String name, String lastName) {
+        this.name = name;
+        this.lastName = lastName;
+    }
 }

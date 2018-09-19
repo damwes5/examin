@@ -15,15 +15,15 @@ public class ExamAnswer {
     @GeneratedValue
     Long id;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "exam")
     Exam exam;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "question")
     Question question;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "answer")
     Answer answer;
 

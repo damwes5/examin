@@ -1,10 +1,7 @@
 package pl.polkomtel.egzamin;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import pl.polkomtel.egzamin.Entity.Answer;
-import pl.polkomtel.egzamin.Entity.Person;
-import pl.polkomtel.egzamin.Entity.Question;
-import pl.polkomtel.egzamin.Entity.Template;
+import pl.polkomtel.egzamin.Entity.*;
 import pl.polkomtel.egzamin.dictionary.GroupQuestion;
 import pl.polkomtel.egzamin.services.*;
 
@@ -16,22 +13,21 @@ public class Egzaminator {
     public static void main(String[] args) {
         try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ExamConfig.class)) {
 
-            AnswerService answerService = context.getBean(AnswerService.class);
-            ExamService examService = context.getBean(ExamService.class);
-            ExamAnswerService examAnswerService = context.getBean(ExamAnswerService.class);
-        //    PersonService personService = context.getBean(PersonService.class);
+            //AnswerService answerService = context.getBean(AnswerService.class);
+            //ExamAnswerService examAnswerService = context.getBean(ExamAnswerService.class);
             QuestionService questionService = context.getBean(QuestionService.class);
+            ExamService examService = context.getBean(ExamService.class);
+
             TemplateService templateService = context.getBean(TemplateService.class);
-/*
 
-            // new Person
-            personService.add(new Person("Grzegorz", "Brzenczyszczykiewicz"));
-            personService.add(new Person("Stefan", "Karwowski"));
 
-            System.out.println("All person: " + personService.getAll());
-*/
+            // add new person
+            PersonService personService = context.getBean(PersonService.class);
+            Person person1 = new Person("Grzegorz", "Brzenczyszczykiewicz");
+            personService.add(person1);
+            //System.out.println("Added person: " + personService.getAll());
 
-            // posilble answers for question 1
+            // create possible answers
             Answer answerSpring = new Answer();
             answerSpring.setValue("Spring");
             answerSpring.setIsCorrect(true);
@@ -44,16 +40,15 @@ public class Egzaminator {
             answerSet.add(answerJpa);
             answerSet.add(answerSpring);
 
-            // question 1
+            // create question 1
             Question question = new Question();
             question.setValue("Który framwork lubisz najbardziej ?");
             question.setGroupQuestion(GroupQuestion.DEVELOPMENT);
             question.setAnswers(answerSet);
-            //question = questionService.add(question);
 
-            //System.out.println("Question saved: " + question);
+            //questionService.add(question);
 
-            // templete 1
+            // add templete 1 with dependencies
             Template template = new Template();
             template.setName("Jezyki programowania");
             Set<Question> questions = new HashSet<>();
@@ -61,19 +56,35 @@ public class Egzaminator {
             template.setQuestion(questions);
             template = templateService.add(template);
 
-            System.out.println("Template: " + template);
-
-            // exam 1
-            /*
+            // exam 2 begin - with set person, set templete with question and possible asnwer
             Exam exam = new Exam();
-            //Person person = personService.getAll().get(0);
-            //exam.setPerson(person);
+            exam.setPerson(person1);
             exam.setTemplate(template);
 
-            examService.add(exam);
+            exam = examService.add(exam);
 
-            System.out.println("Exam: " + exam);
-*/
+            System.out.println("Exam started " + exam);
+
+
+            // answer checked on the exam
+            ExamAnswer examAnswer = new ExamAnswer();
+            examAnswer.setAnswer(answerSpring);
+            examAnswer.setQuestion(question);
+            examAnswer.setExam(exam);
+
+            Set<ExamAnswer> answerCheckedSet = new HashSet<>();
+            answerCheckedSet.add(examAnswer);
+
+            exam.setExamAnswer(answerCheckedSet);
+
+            Exam endedExam = examService.update(exam);
+
+            System.out.println("Exam ended with added answers" + endedExam);
+
+
+
         }
     }
+
+
 }
