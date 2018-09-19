@@ -14,8 +14,8 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import pl.polkomtel.egzamin.repository.PersonRepository;
-import pl.polkomtel.egzamin.services.PersonService;
+import pl.polkomtel.egzamin.repository.*;
+import pl.polkomtel.egzamin.services.*;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -30,6 +30,30 @@ import static java.lang.Integer.parseInt;
 @Configuration
 public class ExamConfig {
 
+    @Bean
+    public QuestionService questionService(QuestionRepository questionRepository) {
+        return new QuestionService(questionRepository);
+    }
+
+    @Bean
+    public TemplateService templateService(TemplateRepository templateRepository) {
+        return new TemplateService(templateRepository);
+    }
+
+    @Bean
+    public ExamAnswerService examAnswerService(ExamAnswerRepository examAnswerRepository) {
+        return new ExamAnswerService(examAnswerRepository);
+    }
+
+    @Bean
+    public ExamService examService(ExamRepository examRepository) {
+        return new ExamService(examRepository);
+    }
+
+    @Bean
+    public AnswerService answerService(AnswerRepository answerRepository) {
+        return new AnswerService(answerRepository);
+    }
 
     @Bean
     public PersonService personService(PersonRepository personRepository) {
