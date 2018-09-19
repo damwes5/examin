@@ -1,12 +1,14 @@
 package pl.polkomtel.egzamin.Entity;
 
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@RequiredArgsConstructor
 @Data
 public class Template {
 

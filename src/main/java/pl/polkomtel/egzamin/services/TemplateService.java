@@ -20,6 +20,7 @@ public class TemplateService {
     @NonNull
     private TemplateRepository templateRepository;
 
+    @Transactional
     public Template getById(Long id) {
         return templateRepository.getOne(id);
     }

@@ -9,6 +9,7 @@ import pl.polkomtel.egzamin.Entity.Person;
 import pl.polkomtel.egzamin.repository.PersonRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Transactional
 @Log
@@ -25,6 +26,12 @@ public class PersonService {
 
     public List<Person> getAll(){
         return personRepository.findAll();
+    }
+
+    @Transactional
+    public Person getById(Long id){
+        return personRepository.getOne(id);
+
     }
 
 
