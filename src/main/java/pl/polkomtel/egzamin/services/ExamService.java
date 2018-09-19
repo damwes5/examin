@@ -20,8 +20,9 @@ public class ExamService {
     @NonNull
     private ExamRepository examRepository;
 
-    public Exam add(Exam person) {
-        return examRepository.save(person);
+    @Transactional
+    public Exam add(Exam exam) {
+        return examRepository.save(exam);
     }
 
     public List<Exam> getAll() {
@@ -31,6 +32,4 @@ public class ExamService {
     public Optional<Exam> getById(Long id) {
         return examRepository.findById(id);
     }
-
-
 }

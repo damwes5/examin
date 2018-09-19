@@ -19,15 +19,17 @@ public class Egzaminator {
             AnswerService answerService = context.getBean(AnswerService.class);
             ExamService examService = context.getBean(ExamService.class);
             ExamAnswerService examAnswerService = context.getBean(ExamAnswerService.class);
-            PersonService personService = context.getBean(PersonService.class);
+        //    PersonService personService = context.getBean(PersonService.class);
             QuestionService questionService = context.getBean(QuestionService.class);
             TemplateService templateService = context.getBean(TemplateService.class);
+/*
 
             // new Person
             personService.add(new Person("Grzegorz", "Brzenczyszczykiewicz"));
             personService.add(new Person("Stefan", "Karwowski"));
 
             System.out.println("All person: " + personService.getAll());
+*/
 
             // posilble answers for question 1
             Answer answerSpring = new Answer();

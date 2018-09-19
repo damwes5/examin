@@ -1,0 +1,5 @@
+POST http://localhost:8380/api/v/1/exams?idPerson=324&idTemplate=234
+Content-Type: application/json
+
+
+###
